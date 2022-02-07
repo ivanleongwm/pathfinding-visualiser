@@ -4,7 +4,7 @@ import './Node.css'
 function Node() {
     
     return (
-        <div className="node">Node</div>
+        <div className="node"></div>
     )
 }
 
