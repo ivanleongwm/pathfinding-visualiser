@@ -1,10 +1,11 @@
 import React from 'react';
 import './Node.css'
 
-function Node() {
-    
+function Node(props) {
+    const { isFinish, isStart } = props
+    const extraClassName = isFinish ? 'node-finish' : isStart ? 'node-start' : '';
     return (
-        <div className="node"></div>
+        <div className={`node ${extraClassName}`}></div>
     )
 }
 
