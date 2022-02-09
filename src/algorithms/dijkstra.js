@@ -37,3 +37,25 @@ const lowestCostNode = (costs, processed) => {
 }
 
 console.log(lowestCostNode(costs, processed))
+
+const dijkstra = (graph) => {
+    // creating costs, parents and processed data structures
+    const costs = Object.assign({ finish: 'Infinity' }, graph.start);
+    const parents = { finish: null };
+    for (let child in graph.start) {
+        parents[child] = 'start';
+    }
+    const processed = [];
+
+    // Set initial value of node being procssed
+    let node = lowestCostNode(costs, processed);
+
+    // Loop to continously look for the cheapest node
+    while (node) {
+        let cost = costs[node];
+        let children = graph[node];
+        for (let child in children) {
+
+        }
+    }
+}
