@@ -54,8 +54,34 @@ const dijkstra = (graph) => {
     while (node) {
         let cost = costs[node];
         let children = graph[node];
-        for (let child in children) {
-
+        for (let childNode in children) {
+            let newCost = cost + children[childNode]
+            if (!costs[childNode]) {
+                costs[childNode] = newCost;
+                parents[childNode] = node;
+            }
+            if (costs[childNode] > newCost) {
+                costs[childNode] = newCost;
+                parents[childNode] = node;
+            }
         }
+        processed.push(node);
+        node = lowestCostNode(costs, processed);
     }
+    console.log(costs)
+    console.log(parents)
+    let optimalPath = ['finish'];
+    let parent = parents.finish;
+    while (parent) {
+        optimalPath.push(parent);
+        parent = parents[parent]
+    }
+    optimalPath.reverse();
+
+    const results = {
+        distance: costs.finish,
+        path: optimalPath
+    };
+    return results;
 }
+console.log(dijkstra(graph))
