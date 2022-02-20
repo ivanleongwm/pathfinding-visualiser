@@ -40,6 +40,26 @@ export default function PathfindingVisualiser() {
         createGridArray();
     }, [])
 
+    function animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder) {
+        for (let i = 0; i <= visitedNodesInOrder.length; i++) {
+            if (i === visitedNodesInOrder.length) {
+                // triggers traceback of shortestpath visual at end of array
+                setTimeout(() => {
+                    animateShortestPath(nodesInShortestPathOrder);
+                }, 10 * i);
+                return;
+            }
+            setTimeout(() => {
+                const node = visitedNodesInOrder[i]
+                document.getElementById(`node-`)
+            })
+        }
+    }
+
+    function animateShortestPath() {
+
+    }
+
     function visualiseDijkstra() {
         const { grid } = state.grid;
         const startNode = grid[START_NODE_ROW][START_NODE_COL];
@@ -58,14 +78,14 @@ export default function PathfindingVisualiser() {
                 {grid.map((row, rowIdx) => {
                     return <div className='row' key={rowIdx}>
                         {row.map((node, nodeIdx) => {
-                            const { isStart, isFinish } = node;
+                            const { row, col, isStart, isFinish } = node;
                             return (
                                 <Node
                                     key={nodeIdx}
                                     isStart={isStart}
                                     isFinish={isFinish}
-                                    test={'foo'}
-                                    test={'kappa'} />
+                                    row={row}
+                                    col={col} />
                             );
                         })}
                     </div>

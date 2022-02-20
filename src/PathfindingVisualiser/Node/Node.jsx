@@ -2,10 +2,12 @@ import React from 'react';
 import './Node.css'
 
 function Node(props) {
-    const { isFinish, isStart } = props
+    const { row, col, isFinish, isStart } = props
     const extraClassName = isFinish ? 'node-finish' : isStart ? 'node-start' : '';
     return (
-        <div className={`node ${extraClassName}`}></div>
+        <div
+            id={`node-${row}-${col}`}
+            className={`node ${extraClassName}`}></div>
     )
 }
 
