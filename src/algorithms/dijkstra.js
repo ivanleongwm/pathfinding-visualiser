@@ -43,6 +43,7 @@ export function dijkstra(grid, startNode, finishNode) {
         // Then we are trapped and should stop
         if (cheapestNode.distance === Infinity) return visitedNodesInOrder;
         cheapestNode.isVisited = true;
+        visitedNodesInOrder.push(cheapestNode)
         if (cheapestNode === finishNode) return visitedNodesInOrder;
         updateUnvisitedNeighbors(cheapestNode, grid);
     }
@@ -54,7 +55,6 @@ export function getNodesInShortestPathOrder(finishNode) {
     let currentNode = finishNode;
     while (currentNode !== null) {
         nodesInShortestPathOrder.unshift(currentNode);
-        console.log(currentNode)
         currentNode = currentNode.previousNode;
     }
     return nodesInShortestPathOrder
