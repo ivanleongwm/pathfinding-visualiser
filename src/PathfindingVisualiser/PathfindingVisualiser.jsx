@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Node from './Node/Node';
-import { dijkstra } from '../algorithms/dijkstra';
+import { dijkstra, getNodesInShortestPathOrder } from '../algorithms/dijkstra';
 import './PathfindingVisualiser.css';
 
 const START_NODE_ROW = 5;
@@ -41,7 +41,11 @@ export default function PathfindingVisualiser() {
     }, [])
 
     function visualiseDijkstra() {
-
+        const { grid } = state.grid;
+        const startNode = grid[START_NODE_ROW][START_NODE_COL];
+        const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+        const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+        const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
     }
 
     const { grid, mouseIsPressed } = state
