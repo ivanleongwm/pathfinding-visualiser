@@ -67,7 +67,9 @@ const getUnvisitedNeighbors = (cheapestNode, grid) => {
     return neighbors.filter(neighbor => !neighbor.isVisited)
 }
 
-function dijkstra(grid, startNode, finishNode) {
+export function dijkstra(grid, startNode, finishNode) {
+    // Performs dijkstra's algorithm, returning all nodes in the oder they were visited.
+    // Also points all nodes to their previous node, allowing us to compute the shortest path
     const visitedNodesInOrder = [];
     startNode.distance = 0;
     const unvisitedNodes = getAllNodes(grid);
@@ -83,7 +85,8 @@ function dijkstra(grid, startNode, finishNode) {
     }
 }
 
-function getNodesInShortestPathOrder(finishNode) {
+export function getNodesInShortestPathOrder(finishNode) {
+    // backtracks from the finish node to the shortest path
     const nodesInShortestPathOrder = [];
     let currentNode = finishNode;
     while (currentNode !== null) {
